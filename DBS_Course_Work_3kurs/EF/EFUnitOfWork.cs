@@ -17,9 +17,9 @@ namespace DBS_Course_Work_3kurs.EF
         private DiscountsRepository discountsRepository;
         private FinesRepository finesRepository;
         private LendingsRepository lendingsRepository;
-        public EFUnitOfWork(DbContextOptions options)
+        public EFUnitOfWork(LibraryDBContext context)
         {
-            db = new LibraryDBContext(options);
+            db = context;
         }
 
         public IBooksRepository books 

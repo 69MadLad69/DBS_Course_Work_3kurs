@@ -49,10 +49,10 @@ namespace DBS_Course_Work_3kurs
             return new LendingsRepository(_context);
         }
 
-        public static IUnitOfWork GetEFUnitOfWork(DbContextOptions options)
+        public static IUnitOfWork GetEFUnitOfWork()
         {
             EnsureInitialized();
-            return new EFUnitOfWork(options);
+            return new EFUnitOfWork(_context);
         }
 
         private static void EnsureInitialized()

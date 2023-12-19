@@ -35,9 +35,11 @@ namespace DBS_Course_Work_3kurs
 
             RepositoryFactory.Initialize(new LibraryDBContext(dbContextOptions.Options));
 
-            ef = new EFUnitOfWork(dbContextOptions.Options);
+            //ef = RepositoryFactory.GetEFUnitOfWork();
 
             InitializeComponent();
+
+            BooksSearchType.SelectedIndex = 0;
 
             LoadBooksTable();
         }
@@ -51,7 +53,7 @@ namespace DBS_Course_Work_3kurs
         public void LoadBooksTable()
         {
             BooksTable.Rows.Clear();
-            foreach (Book b in ef.books.GetPage(pageSize, BooksPageNumber))
+            foreach (Book b in RepositoryFactory.GetBooksRepository().GetPage(pageSize, BooksPageNumber))
             {
                 BooksTable.Rows.Add(b.Book_Id, b.Title, b.Author, b.Genre, b.Collateral_value, b.Quantity);
             }
@@ -71,7 +73,7 @@ namespace DBS_Course_Work_3kurs
 
         private void BooksNextPageButton_Click(object sender, EventArgs e)
         {
-            if (BooksPageNumber + 1 <= ef.books.CountPages(pageSize))
+            if (BooksPageNumber + 1 <= RepositoryFactory.GetBooksRepository().CountPages(pageSize))
             {
                 BooksPageNumber += 1;
                 ChangePageLabel(BooksPageLabel, BooksPageNumber);
@@ -106,7 +108,7 @@ namespace DBS_Course_Work_3kurs
 
         private void BooksLastPageButton_Click(object sender, EventArgs e)
         {
-            BooksPageNumber = ef.books.CountPages(pageSize);
+            BooksPageNumber = RepositoryFactory.GetBooksRepository().CountPages(pageSize);
             ChangePageLabel(BooksPageLabel, BooksPageNumber);
             LoadBooksTable();
         }
@@ -123,7 +125,7 @@ namespace DBS_Course_Work_3kurs
             DialogResult result = MessageBox.Show("Чи ви впевнені в видаленні рядка #" + Book_Id + "?", "Підтвердження", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                ef.books.Delete(Book_Id);
+                RepositoryFactory.GetBooksRepository().Delete(Book_Id);
                 LoadBooksTable();
             }
         }

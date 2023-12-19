@@ -1,5 +1,6 @@
 ﻿using DBS_Course_Work_3kurs.EF;
 using DBS_Course_Work_3kurs.Entities;
+using DBS_Course_Work_3kurs.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
     public partial class AddNewBook : Form
     {
         MainForm mainForm;
+        IBooksRepository booksRepository = RepositoryFactory.GetBooksRepository();
         public AddNewBook(MainForm main)
         {
             InitializeComponent();
@@ -33,10 +35,10 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
         {
             int newBookId = 1;
 
-            if (mainForm.ef.books.GetPage(mainForm.pageSize, 0).Count() != 0)
+            if (booksRepository.GetPage(mainForm.pageSize, 0).Count() != 0)
             {
-                newBookId = mainForm.ef.books.GetPage(
-                    mainForm.pageSize, mainForm.ef.books.CountPages(mainForm.pageSize)
+                newBookId = booksRepository.GetPage(
+                    mainForm.pageSize, booksRepository.CountPages(mainForm.pageSize)
                     ).Last().Book_Id + 1;
             }
 
@@ -61,9 +63,9 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
                     newBook.Quantity = newBookQuantity;
 
 
-                    if (mainForm.ef.books.Find(book => book.Title == newBook.Title, 0, 10).Count() == 0)
+                    if (booksRepository.Find(book => book.Title == newBook.Title, 0, 10).Count() == 0)
                     {
-                        mainForm.ef.books.Create(newBook);
+                        booksRepository.Create(newBook);
                         mainForm.LoadBooksTable();
                         this.Close();
                     }

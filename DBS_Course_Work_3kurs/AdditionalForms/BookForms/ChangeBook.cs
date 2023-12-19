@@ -1,4 +1,6 @@
 ﻿using DBS_Course_Work_3kurs.Entities;
+using DBS_Course_Work_3kurs.Repositories.Implementation;
+using DBS_Course_Work_3kurs.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +17,13 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
     {
         MainForm mainForm;
         Book selectedBook;
+        IBooksRepository booksRepository = RepositoryFactory.GetBooksRepository();
         public ChangeBook(MainForm main, DataGridViewRow selectedRow)
         {
             InitializeComponent();
             mainForm = main;
 
-            selectedBook = mainForm.ef.books.Get((int)selectedRow.Cells[0].Value);
+            selectedBook = booksRepository.Get((int)selectedRow.Cells[0].Value);
 
             BookTitle.Text = selectedBook.Title;
             BookAuthor.Text = selectedBook.Author;
@@ -55,9 +58,9 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
                     selectedBook.Quantity = selectedBookQuantity;
 
 
-                    if (mainForm.ef.books.Find(book => book.Title == selectedBook.Title, 0, 10).Count() == 0)
+                    if (booksRepository.Find(book => book.Title == selectedBook.Title, 0, 10).Count() == 0)
                     {
-                        mainForm.ef.books.Update(selectedBook);
+                        booksRepository.Update(selectedBook);
                         mainForm.LoadBooksTable();
                         this.Close();
                     }
