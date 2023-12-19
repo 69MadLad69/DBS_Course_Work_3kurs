@@ -21,12 +21,14 @@ namespace DBS_Course_Work_3kurs.Repositories.Implementation
         public void Create(T item)
         {
             _set.Add(item);
+            Save();
         }
 
         public void Delete(int id)
         {
             var item = Get(id);
             _set.Remove(item);
+            Save();
         }
 
         public T Get(int id)
@@ -76,6 +78,7 @@ namespace DBS_Course_Work_3kurs.Repositories.Implementation
         public void Update(T item)
         {
             _context.Entry(item).State = EntityState.Modified;
+            Save();
         }
     }
 }

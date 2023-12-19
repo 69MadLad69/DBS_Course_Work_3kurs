@@ -30,6 +30,9 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Tabs = new TabControl();
             tabPage1 = new TabPage();
@@ -52,6 +55,10 @@
             BooksUpperPart = new Panel();
             BooksUpperPartLayout = new TableLayoutPanel();
             BooksMainTitle = new Label();
+            BooksSearchLayout = new TableLayoutPanel();
+            BooksSearchButtonsLabel = new Label();
+            BooksSearchTextLabel = new Label();
+            BooksSearchTypeLabel = new Label();
             BooksControlPanel = new Panel();
             BooksControlLayout = new TableLayoutPanel();
             DeleteBookButton = new Button();
@@ -61,6 +68,11 @@
             AddBookLabel = new Label();
             AddBookButton = new Button();
             tabPage2 = new TabPage();
+            BookSearchText = new TextBox();
+            BooksSearchButtonsLayout = new TableLayoutPanel();
+            BooksSearchButton = new Button();
+            BooksShowAllButton = new Button();
+            BooksSearchType = new ComboBox();
             Tabs.SuspendLayout();
             tabPage1.SuspendLayout();
             BooksMainPanel.SuspendLayout();
@@ -70,8 +82,10 @@
             BooksPagesLayout.SuspendLayout();
             BooksUpperPart.SuspendLayout();
             BooksUpperPartLayout.SuspendLayout();
+            BooksSearchLayout.SuspendLayout();
             BooksControlPanel.SuspendLayout();
             BooksControlLayout.SuspendLayout();
+            BooksSearchButtonsLayout.SuspendLayout();
             SuspendLayout();
             // 
             // Tabs
@@ -84,7 +98,7 @@
             Tabs.Location = new Point(0, 0);
             Tabs.Name = "Tabs";
             Tabs.SelectedIndex = 0;
-            Tabs.Size = new Size(1405, 710);
+            Tabs.Size = new Size(1405, 752);
             Tabs.TabIndex = 0;
             // 
             // tabPage1
@@ -95,7 +109,7 @@
             tabPage1.Location = new Point(4, 39);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1397, 667);
+            tabPage1.Size = new Size(1397, 709);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Книги";
             // 
@@ -106,16 +120,16 @@
             BooksMainPanel.Dock = DockStyle.Fill;
             BooksMainPanel.Location = new Point(253, 3);
             BooksMainPanel.Name = "BooksMainPanel";
-            BooksMainPanel.Size = new Size(1141, 661);
+            BooksMainPanel.Size = new Size(1141, 703);
             BooksMainPanel.TabIndex = 1;
             // 
             // BooksLowerPart
             // 
             BooksLowerPart.Controls.Add(BooksLowerPartLayout);
             BooksLowerPart.Dock = DockStyle.Fill;
-            BooksLowerPart.Location = new Point(0, 140);
+            BooksLowerPart.Location = new Point(0, 166);
             BooksLowerPart.Name = "BooksLowerPart";
-            BooksLowerPart.Size = new Size(1141, 521);
+            BooksLowerPart.Size = new Size(1141, 537);
             BooksLowerPart.TabIndex = 1;
             // 
             // BooksLowerPartLayout
@@ -131,35 +145,41 @@
             BooksLowerPartLayout.RowCount = 2;
             BooksLowerPartLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 88.29175F));
             BooksLowerPartLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 11.7082529F));
-            BooksLowerPartLayout.Size = new Size(1141, 521);
+            BooksLowerPartLayout.Size = new Size(1141, 537);
             BooksLowerPartLayout.TabIndex = 1;
             // 
             // BooksTable
             // 
             BooksTable.AllowUserToAddRows = false;
             BooksTable.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(251, 234, 235);
+            dataGridViewCellStyle1.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(251, 234, 235);
+            BooksTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             BooksTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             BooksTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             BooksTable.BackgroundColor = Color.FromArgb(251, 234, 235);
             BooksTable.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(47, 60, 126);
-            dataGridViewCellStyle1.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(251, 234, 235);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(251, 234, 235);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(47, 60, 126);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            BooksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            BooksTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            BooksTable.Columns.AddRange(new DataGridViewColumn[] { Book_Id, Book_Title, Book_Author, Book_Genre, Book_Value, Book_Quantity });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(251, 234, 235);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(47, 60, 126);
             dataGridViewCellStyle2.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(251, 234, 235);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 60, 126);
             dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(251, 234, 235);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            BooksTable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            BooksTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            BooksTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            BooksTable.Columns.AddRange(new DataGridViewColumn[] { Book_Id, Book_Title, Book_Author, Book_Genre, Book_Value, Book_Quantity });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle4.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(251, 234, 235);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            BooksTable.DefaultCellStyle = dataGridViewCellStyle4;
             BooksTable.Dock = DockStyle.Fill;
             BooksTable.EnableHeadersVisualStyles = false;
             BooksTable.GridColor = Color.White;
@@ -167,22 +187,40 @@
             BooksTable.MultiSelect = false;
             BooksTable.Name = "BooksTable";
             BooksTable.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(251, 234, 235);
+            dataGridViewCellStyle5.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(251, 234, 235);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            BooksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            BooksTable.RowHeadersVisible = false;
+            BooksTable.RowHeadersWidth = 51;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(251, 234, 235);
+            dataGridViewCellStyle6.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 60, 126);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(251, 234, 235);
+            BooksTable.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            BooksTable.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(251, 234, 235);
+            BooksTable.RowTemplate.DefaultCellStyle.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksTable.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(47, 60, 126);
+            BooksTable.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 60, 126);
+            BooksTable.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.FromArgb(251, 234, 235);
+            BooksTable.RowTemplate.Height = 29;
+            BooksTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            BooksTable.Size = new Size(1135, 468);
+            BooksTable.TabIndex = 1;
+            // 
+            // Book_Id
+            // 
             dataGridViewCellStyle3.BackColor = Color.FromArgb(251, 234, 235);
             dataGridViewCellStyle3.Font = new Font("Bookman Old Style", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = Color.FromArgb(47, 60, 126);
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 60, 126);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(251, 234, 235);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            BooksTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            BooksTable.RowHeadersVisible = false;
-            BooksTable.RowHeadersWidth = 51;
-            BooksTable.RowTemplate.Height = 29;
-            BooksTable.Size = new Size(1135, 454);
-            BooksTable.TabIndex = 1;
-            // 
-            // Book_Id
-            // 
+            Book_Id.DefaultCellStyle = dataGridViewCellStyle3;
             Book_Id.FillWeight = 25F;
             Book_Id.HeaderText = "ID";
             Book_Id.MinimumWidth = 6;
@@ -242,11 +280,11 @@
             BooksPagesLayout.Controls.Add(BooksFirstPageButton, 1, 0);
             BooksPagesLayout.Controls.Add(BooksPageLabel, 3, 0);
             BooksPagesLayout.Dock = DockStyle.Fill;
-            BooksPagesLayout.Location = new Point(3, 463);
+            BooksPagesLayout.Location = new Point(3, 477);
             BooksPagesLayout.Name = "BooksPagesLayout";
             BooksPagesLayout.RowCount = 1;
             BooksPagesLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            BooksPagesLayout.Size = new Size(1135, 55);
+            BooksPagesLayout.Size = new Size(1135, 57);
             BooksPagesLayout.TabIndex = 2;
             // 
             // BooksLastPageButton
@@ -254,7 +292,7 @@
             BooksLastPageButton.Dock = DockStyle.Fill;
             BooksLastPageButton.Location = new Point(814, 3);
             BooksLastPageButton.Name = "BooksLastPageButton";
-            BooksLastPageButton.Size = new Size(116, 49);
+            BooksLastPageButton.Size = new Size(116, 51);
             BooksLastPageButton.TabIndex = 3;
             BooksLastPageButton.Text = "Last";
             BooksLastPageButton.UseVisualStyleBackColor = true;
@@ -265,7 +303,7 @@
             BooksNextPageButton.Dock = DockStyle.Fill;
             BooksNextPageButton.Location = new Point(692, 3);
             BooksNextPageButton.Name = "BooksNextPageButton";
-            BooksNextPageButton.Size = new Size(116, 49);
+            BooksNextPageButton.Size = new Size(116, 51);
             BooksNextPageButton.TabIndex = 2;
             BooksNextPageButton.Text = "Next";
             BooksNextPageButton.UseVisualStyleBackColor = true;
@@ -276,7 +314,7 @@
             BooksPrevPageButton.Dock = DockStyle.Fill;
             BooksPrevPageButton.Location = new Point(325, 3);
             BooksPrevPageButton.Name = "BooksPrevPageButton";
-            BooksPrevPageButton.Size = new Size(116, 49);
+            BooksPrevPageButton.Size = new Size(116, 51);
             BooksPrevPageButton.TabIndex = 1;
             BooksPrevPageButton.Text = "Prev";
             BooksPrevPageButton.UseVisualStyleBackColor = true;
@@ -287,7 +325,7 @@
             BooksFirstPageButton.Dock = DockStyle.Fill;
             BooksFirstPageButton.Location = new Point(203, 3);
             BooksFirstPageButton.Name = "BooksFirstPageButton";
-            BooksFirstPageButton.Size = new Size(116, 49);
+            BooksFirstPageButton.Size = new Size(116, 51);
             BooksFirstPageButton.TabIndex = 0;
             BooksFirstPageButton.Text = "First";
             BooksFirstPageButton.UseVisualStyleBackColor = true;
@@ -300,7 +338,7 @@
             BooksPageLabel.Font = new Font("Bookman Old Style", 16F, FontStyle.Regular, GraphicsUnit.Point);
             BooksPageLabel.Location = new Point(447, 0);
             BooksPageLabel.Name = "BooksPageLabel";
-            BooksPageLabel.Size = new Size(239, 55);
+            BooksPageLabel.Size = new Size(239, 57);
             BooksPageLabel.TabIndex = 4;
             BooksPageLabel.Text = "Page: 0";
             BooksPageLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -311,7 +349,7 @@
             BooksUpperPart.Dock = DockStyle.Top;
             BooksUpperPart.Location = new Point(0, 0);
             BooksUpperPart.Name = "BooksUpperPart";
-            BooksUpperPart.Size = new Size(1141, 140);
+            BooksUpperPart.Size = new Size(1141, 166);
             BooksUpperPart.TabIndex = 0;
             // 
             // BooksUpperPartLayout
@@ -320,13 +358,14 @@
             BooksUpperPartLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             BooksUpperPartLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             BooksUpperPartLayout.Controls.Add(BooksMainTitle, 0, 0);
+            BooksUpperPartLayout.Controls.Add(BooksSearchLayout, 0, 1);
             BooksUpperPartLayout.Dock = DockStyle.Fill;
             BooksUpperPartLayout.Location = new Point(0, 0);
             BooksUpperPartLayout.Name = "BooksUpperPartLayout";
             BooksUpperPartLayout.RowCount = 2;
             BooksUpperPartLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 37.8571434F));
             BooksUpperPartLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 62.1428566F));
-            BooksUpperPartLayout.Size = new Size(1141, 140);
+            BooksUpperPartLayout.Size = new Size(1141, 166);
             BooksUpperPartLayout.TabIndex = 0;
             // 
             // BooksMainTitle
@@ -336,10 +375,67 @@
             BooksMainTitle.Font = new Font("Bookman Old Style", 30F, FontStyle.Regular, GraphicsUnit.Point);
             BooksMainTitle.Location = new Point(3, 0);
             BooksMainTitle.Name = "BooksMainTitle";
-            BooksMainTitle.Size = new Size(1135, 53);
+            BooksMainTitle.Size = new Size(1135, 62);
             BooksMainTitle.TabIndex = 0;
             BooksMainTitle.Text = "Книги";
             BooksMainTitle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // BooksSearchLayout
+            // 
+            BooksSearchLayout.ColumnCount = 3;
+            BooksSearchLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            BooksSearchLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            BooksSearchLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            BooksSearchLayout.Controls.Add(BookSearchText, 1, 1);
+            BooksSearchLayout.Controls.Add(BooksSearchButtonsLabel, 2, 0);
+            BooksSearchLayout.Controls.Add(BooksSearchTextLabel, 1, 0);
+            BooksSearchLayout.Controls.Add(BooksSearchTypeLabel, 0, 0);
+            BooksSearchLayout.Controls.Add(BooksSearchButtonsLayout, 2, 1);
+            BooksSearchLayout.Controls.Add(BooksSearchType, 0, 1);
+            BooksSearchLayout.Dock = DockStyle.Fill;
+            BooksSearchLayout.Location = new Point(3, 65);
+            BooksSearchLayout.Name = "BooksSearchLayout";
+            BooksSearchLayout.RowCount = 2;
+            BooksSearchLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            BooksSearchLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            BooksSearchLayout.Size = new Size(1135, 98);
+            BooksSearchLayout.TabIndex = 1;
+            // 
+            // BooksSearchButtonsLabel
+            // 
+            BooksSearchButtonsLabel.AutoSize = true;
+            BooksSearchButtonsLabel.Dock = DockStyle.Fill;
+            BooksSearchButtonsLabel.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksSearchButtonsLabel.Location = new Point(759, 0);
+            BooksSearchButtonsLabel.Name = "BooksSearchButtonsLabel";
+            BooksSearchButtonsLabel.Size = new Size(373, 49);
+            BooksSearchButtonsLabel.TabIndex = 3;
+            BooksSearchButtonsLabel.Text = "Пошук";
+            BooksSearchButtonsLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // BooksSearchTextLabel
+            // 
+            BooksSearchTextLabel.AutoSize = true;
+            BooksSearchTextLabel.Dock = DockStyle.Fill;
+            BooksSearchTextLabel.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksSearchTextLabel.Location = new Point(381, 0);
+            BooksSearchTextLabel.Name = "BooksSearchTextLabel";
+            BooksSearchTextLabel.Size = new Size(372, 49);
+            BooksSearchTextLabel.TabIndex = 2;
+            BooksSearchTextLabel.Text = "Текст для пошуку";
+            BooksSearchTextLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // BooksSearchTypeLabel
+            // 
+            BooksSearchTypeLabel.AutoSize = true;
+            BooksSearchTypeLabel.Dock = DockStyle.Fill;
+            BooksSearchTypeLabel.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksSearchTypeLabel.Location = new Point(3, 0);
+            BooksSearchTypeLabel.Name = "BooksSearchTypeLabel";
+            BooksSearchTypeLabel.Size = new Size(372, 49);
+            BooksSearchTypeLabel.TabIndex = 1;
+            BooksSearchTypeLabel.Text = "Тип пошуку";
+            BooksSearchTypeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // BooksControlPanel
             // 
@@ -348,7 +444,7 @@
             BooksControlPanel.Dock = DockStyle.Left;
             BooksControlPanel.Location = new Point(3, 3);
             BooksControlPanel.Name = "BooksControlPanel";
-            BooksControlPanel.Size = new Size(250, 661);
+            BooksControlPanel.Size = new Size(250, 703);
             BooksControlPanel.TabIndex = 0;
             // 
             // BooksControlLayout
@@ -373,7 +469,7 @@
             BooksControlLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             BooksControlLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             BooksControlLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-            BooksControlLayout.Size = new Size(250, 661);
+            BooksControlLayout.Size = new Size(250, 703);
             BooksControlLayout.TabIndex = 0;
             // 
             // DeleteBookButton
@@ -382,12 +478,13 @@
             DeleteBookButton.FlatAppearance.BorderSize = 3;
             DeleteBookButton.FlatStyle = FlatStyle.Flat;
             DeleteBookButton.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            DeleteBookButton.Location = new Point(3, 553);
+            DeleteBookButton.Location = new Point(3, 588);
             DeleteBookButton.Name = "DeleteBookButton";
-            DeleteBookButton.Size = new Size(244, 105);
+            DeleteBookButton.Size = new Size(244, 112);
             DeleteBookButton.TabIndex = 6;
             DeleteBookButton.Text = "Delete";
             DeleteBookButton.UseVisualStyleBackColor = false;
+            DeleteBookButton.Click += DeleteBookButton_Click;
             // 
             // ChangeBookButton
             // 
@@ -395,21 +492,22 @@
             ChangeBookButton.FlatAppearance.BorderSize = 3;
             ChangeBookButton.FlatStyle = FlatStyle.Flat;
             ChangeBookButton.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            ChangeBookButton.Location = new Point(3, 333);
+            ChangeBookButton.Location = new Point(3, 354);
             ChangeBookButton.Name = "ChangeBookButton";
-            ChangeBookButton.Size = new Size(244, 104);
+            ChangeBookButton.Size = new Size(244, 111);
             ChangeBookButton.TabIndex = 5;
             ChangeBookButton.Text = "Change";
             ChangeBookButton.UseVisualStyleBackColor = false;
+            ChangeBookButton.Click += ChangeBookButton_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(3, 440);
+            label3.Location = new Point(3, 468);
             label3.Name = "label3";
-            label3.Size = new Size(244, 110);
+            label3.Size = new Size(244, 117);
             label3.TabIndex = 3;
             label3.Text = "Видалити книгу";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -419,9 +517,9 @@
             label2.AutoSize = true;
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(3, 220);
+            label2.Location = new Point(3, 234);
             label2.Name = "label2";
-            label2.Size = new Size(244, 110);
+            label2.Size = new Size(244, 117);
             label2.TabIndex = 2;
             label2.Text = "Змінити книгу";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -433,7 +531,7 @@
             AddBookLabel.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
             AddBookLabel.Location = new Point(3, 0);
             AddBookLabel.Name = "AddBookLabel";
-            AddBookLabel.Size = new Size(244, 110);
+            AddBookLabel.Size = new Size(244, 117);
             AddBookLabel.TabIndex = 1;
             AddBookLabel.Text = "Додати книгу";
             AddBookLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -444,9 +542,9 @@
             AddBookButton.FlatAppearance.BorderSize = 4;
             AddBookButton.FlatStyle = FlatStyle.Flat;
             AddBookButton.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            AddBookButton.Location = new Point(3, 113);
+            AddBookButton.Location = new Point(3, 120);
             AddBookButton.Name = "AddBookButton";
-            AddBookButton.Size = new Size(244, 104);
+            AddBookButton.Size = new Size(244, 111);
             AddBookButton.TabIndex = 4;
             AddBookButton.Text = "Add";
             AddBookButton.UseVisualStyleBackColor = false;
@@ -462,11 +560,79 @@
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // BookSearchText
+            // 
+            BookSearchText.BackColor = Color.FromArgb(251, 234, 235);
+            BookSearchText.BorderStyle = BorderStyle.FixedSingle;
+            BookSearchText.Dock = DockStyle.Fill;
+            BookSearchText.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            BookSearchText.ForeColor = Color.FromArgb(47, 60, 126);
+            BookSearchText.Location = new Point(381, 52);
+            BookSearchText.Name = "BookSearchText";
+            BookSearchText.PlaceholderText = "Текст для пошуку";
+            BookSearchText.Size = new Size(372, 43);
+            BookSearchText.TabIndex = 8;
+            // 
+            // BooksSearchButtonsLayout
+            // 
+            BooksSearchButtonsLayout.ColumnCount = 2;
+            BooksSearchButtonsLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            BooksSearchButtonsLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            BooksSearchButtonsLayout.Controls.Add(BooksShowAllButton, 0, 0);
+            BooksSearchButtonsLayout.Controls.Add(BooksSearchButton, 0, 0);
+            BooksSearchButtonsLayout.Dock = DockStyle.Fill;
+            BooksSearchButtonsLayout.Location = new Point(759, 52);
+            BooksSearchButtonsLayout.Name = "BooksSearchButtonsLayout";
+            BooksSearchButtonsLayout.RowCount = 1;
+            BooksSearchButtonsLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            BooksSearchButtonsLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            BooksSearchButtonsLayout.Size = new Size(373, 43);
+            BooksSearchButtonsLayout.TabIndex = 9;
+            // 
+            // BooksSearchButton
+            // 
+            BooksSearchButton.Dock = DockStyle.Fill;
+            BooksSearchButton.FlatAppearance.BorderSize = 4;
+            BooksSearchButton.FlatStyle = FlatStyle.Flat;
+            BooksSearchButton.Font = new Font("Bookman Old Style", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksSearchButton.Location = new Point(3, 3);
+            BooksSearchButton.Name = "BooksSearchButton";
+            BooksSearchButton.Size = new Size(180, 37);
+            BooksSearchButton.TabIndex = 6;
+            BooksSearchButton.Text = "Search";
+            BooksSearchButton.UseVisualStyleBackColor = false;
+            // 
+            // BooksShowAllButton
+            // 
+            BooksShowAllButton.Dock = DockStyle.Fill;
+            BooksShowAllButton.FlatAppearance.BorderSize = 4;
+            BooksShowAllButton.FlatStyle = FlatStyle.Flat;
+            BooksShowAllButton.Font = new Font("Bookman Old Style", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksShowAllButton.Location = new Point(189, 3);
+            BooksShowAllButton.Name = "BooksShowAllButton";
+            BooksShowAllButton.Size = new Size(181, 37);
+            BooksShowAllButton.TabIndex = 7;
+            BooksShowAllButton.Text = "Show All";
+            BooksShowAllButton.UseVisualStyleBackColor = false;
+            // 
+            // BooksSearchType
+            // 
+            BooksSearchType.BackColor = Color.FromArgb(251, 234, 235);
+            BooksSearchType.Dock = DockStyle.Fill;
+            BooksSearchType.DropDownStyle = ComboBoxStyle.DropDownList;
+            BooksSearchType.Font = new Font("Bookman Old Style", 17F, FontStyle.Regular, GraphicsUnit.Point);
+            BooksSearchType.ForeColor = Color.FromArgb(47, 60, 126);
+            BooksSearchType.FormattingEnabled = true;
+            BooksSearchType.Location = new Point(3, 52);
+            BooksSearchType.Name = "BooksSearchType";
+            BooksSearchType.Size = new Size(372, 41);
+            BooksSearchType.TabIndex = 10;
+            // 
             // MainForm
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(251, 234, 235);
-            ClientSize = new Size(1405, 710);
+            ClientSize = new Size(1405, 752);
             Controls.Add(Tabs);
             Font = new Font("Bookman Old Style", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(47, 60, 126);
@@ -484,9 +650,12 @@
             BooksUpperPart.ResumeLayout(false);
             BooksUpperPartLayout.ResumeLayout(false);
             BooksUpperPartLayout.PerformLayout();
+            BooksSearchLayout.ResumeLayout(false);
+            BooksSearchLayout.PerformLayout();
             BooksControlPanel.ResumeLayout(false);
             BooksControlLayout.ResumeLayout(false);
             BooksControlLayout.PerformLayout();
+            BooksSearchButtonsLayout.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -509,12 +678,6 @@
         private Button ChangeBookButton;
         private Button DeleteBookButton;
         private TableLayoutPanel BooksLowerPartLayout;
-        private DataGridViewTextBoxColumn Book_Id;
-        private DataGridViewTextBoxColumn Book_Title;
-        private DataGridViewTextBoxColumn Book_Author;
-        private DataGridViewTextBoxColumn Book_Genre;
-        private DataGridViewTextBoxColumn Book_Value;
-        private DataGridViewTextBoxColumn Book_Quantity;
         private TableLayoutPanel BooksPagesLayout;
         private Button BooksLastPageButton;
         private Button BooksNextPageButton;
@@ -522,5 +685,20 @@
         private Button BooksFirstPageButton;
         private Label BooksPageLabel;
         public DataGridView BooksTable;
+        private DataGridViewTextBoxColumn Book_Id;
+        private DataGridViewTextBoxColumn Book_Title;
+        private DataGridViewTextBoxColumn Book_Author;
+        private DataGridViewTextBoxColumn Book_Genre;
+        private DataGridViewTextBoxColumn Book_Value;
+        private DataGridViewTextBoxColumn Book_Quantity;
+        private TableLayoutPanel BooksSearchLayout;
+        private Label BooksSearchButtonsLabel;
+        private Label BooksSearchTextLabel;
+        private Label BooksSearchTypeLabel;
+        private TextBox BookSearchText;
+        private TableLayoutPanel BooksSearchButtonsLayout;
+        private Button BooksShowAllButton;
+        private Button BooksSearchButton;
+        private ComboBox BooksSearchType;
     }
 }

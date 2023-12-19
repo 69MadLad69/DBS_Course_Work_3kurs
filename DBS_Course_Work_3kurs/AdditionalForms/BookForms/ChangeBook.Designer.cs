@@ -1,6 +1,6 @@
 ﻿namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
 {
-    partial class AddNewBook
+    partial class ChangeBook
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AddBookMainPanel = new Panel();
+            ChangeBookMainPanel = new Panel();
             MainDataPanel = new Panel();
             DataLayout = new TableLayoutPanel();
             BookGenre = new TextBox();
@@ -50,8 +50,8 @@
             ButtonsPanel = new Panel();
             ButtonsLayout = new TableLayoutPanel();
             CancelButton = new Button();
-            AddButton = new Button();
-            AddBookMainPanel.SuspendLayout();
+            ChangeButton = new Button();
+            ChangeBookMainPanel.SuspendLayout();
             MainDataPanel.SuspendLayout();
             DataLayout.SuspendLayout();
             LableRowLayout.SuspendLayout();
@@ -61,18 +61,18 @@
             ButtonsLayout.SuspendLayout();
             SuspendLayout();
             // 
-            // AddBookMainPanel
+            // ChangeBookMainPanel
             // 
-            AddBookMainPanel.Controls.Add(MainDataPanel);
-            AddBookMainPanel.Controls.Add(RightSideBar);
-            AddBookMainPanel.Controls.Add(LeftSideBar);
-            AddBookMainPanel.Controls.Add(TitlePanel);
-            AddBookMainPanel.Controls.Add(ButtonsPanel);
-            AddBookMainPanel.Dock = DockStyle.Fill;
-            AddBookMainPanel.Location = new Point(0, 0);
-            AddBookMainPanel.Name = "AddBookMainPanel";
-            AddBookMainPanel.Size = new Size(1056, 581);
-            AddBookMainPanel.TabIndex = 0;
+            ChangeBookMainPanel.Controls.Add(MainDataPanel);
+            ChangeBookMainPanel.Controls.Add(RightSideBar);
+            ChangeBookMainPanel.Controls.Add(LeftSideBar);
+            ChangeBookMainPanel.Controls.Add(TitlePanel);
+            ChangeBookMainPanel.Controls.Add(ButtonsPanel);
+            ChangeBookMainPanel.Dock = DockStyle.Fill;
+            ChangeBookMainPanel.Location = new Point(0, 0);
+            ChangeBookMainPanel.Name = "ChangeBookMainPanel";
+            ChangeBookMainPanel.Size = new Size(1025, 596);
+            ChangeBookMainPanel.TabIndex = 1;
             // 
             // MainDataPanel
             // 
@@ -80,7 +80,7 @@
             MainDataPanel.Dock = DockStyle.Fill;
             MainDataPanel.Location = new Point(50, 69);
             MainDataPanel.Name = "MainDataPanel";
-            MainDataPanel.Size = new Size(956, 437);
+            MainDataPanel.Size = new Size(925, 452);
             MainDataPanel.TabIndex = 4;
             // 
             // DataLayout
@@ -108,7 +108,7 @@
             DataLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
             DataLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
             DataLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            DataLayout.Size = new Size(956, 437);
+            DataLayout.Size = new Size(925, 452);
             DataLayout.TabIndex = 0;
             // 
             // BookGenre
@@ -118,10 +118,10 @@
             BookGenre.Dock = DockStyle.Fill;
             BookGenre.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
             BookGenre.ForeColor = Color.FromArgb(47, 60, 126);
-            BookGenre.Location = new Point(3, 273);
+            BookGenre.Location = new Point(3, 283);
             BookGenre.Name = "BookGenre";
             BookGenre.PlaceholderText = "Жанр книги";
-            BookGenre.Size = new Size(950, 43);
+            BookGenre.Size = new Size(919, 43);
             BookGenre.TabIndex = 9;
             // 
             // BookAuthor
@@ -131,19 +131,19 @@
             BookAuthor.Dock = DockStyle.Fill;
             BookAuthor.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
             BookAuthor.ForeColor = Color.FromArgb(47, 60, 126);
-            BookAuthor.Location = new Point(3, 165);
+            BookAuthor.Location = new Point(3, 171);
             BookAuthor.Name = "BookAuthor";
             BookAuthor.PlaceholderText = "Автор книги";
-            BookAuthor.Size = new Size(950, 43);
+            BookAuthor.Size = new Size(919, 43);
             BookAuthor.TabIndex = 8;
             // 
             // BookGenreLabel
             // 
             BookGenreLabel.Dock = DockStyle.Fill;
             BookGenreLabel.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            BookGenreLabel.Location = new Point(3, 216);
+            BookGenreLabel.Location = new Point(3, 224);
             BookGenreLabel.Name = "BookGenreLabel";
-            BookGenreLabel.Size = new Size(950, 54);
+            BookGenreLabel.Size = new Size(919, 56);
             BookGenreLabel.TabIndex = 4;
             BookGenreLabel.Text = "Жанр книги";
             BookGenreLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -152,9 +152,9 @@
             // 
             BookAuthorLabel.Dock = DockStyle.Fill;
             BookAuthorLabel.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            BookAuthorLabel.Location = new Point(3, 108);
+            BookAuthorLabel.Location = new Point(3, 112);
             BookAuthorLabel.Name = "BookAuthorLabel";
-            BookAuthorLabel.Size = new Size(950, 54);
+            BookAuthorLabel.Size = new Size(919, 56);
             BookAuthorLabel.TabIndex = 3;
             BookAuthorLabel.Text = "Автор книги";
             BookAuthorLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -165,7 +165,7 @@
             BookTitleLabel.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
             BookTitleLabel.Location = new Point(3, 0);
             BookTitleLabel.Name = "BookTitleLabel";
-            BookTitleLabel.Size = new Size(950, 54);
+            BookTitleLabel.Size = new Size(919, 56);
             BookTitleLabel.TabIndex = 2;
             BookTitleLabel.Text = "Назва книги";
             BookTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -178,21 +178,21 @@
             LableRowLayout.Controls.Add(BookValueLabel, 0, 0);
             LableRowLayout.Controls.Add(BookQuantityLabel, 0, 0);
             LableRowLayout.Dock = DockStyle.Fill;
-            LableRowLayout.Location = new Point(3, 327);
+            LableRowLayout.Location = new Point(3, 339);
             LableRowLayout.Name = "LableRowLayout";
             LableRowLayout.RowCount = 1;
             LableRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             LableRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            LableRowLayout.Size = new Size(950, 48);
+            LableRowLayout.Size = new Size(919, 50);
             LableRowLayout.TabIndex = 5;
             // 
             // BookValueLabel
             // 
             BookValueLabel.Dock = DockStyle.Fill;
             BookValueLabel.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            BookValueLabel.Location = new Point(478, 0);
+            BookValueLabel.Location = new Point(462, 0);
             BookValueLabel.Name = "BookValueLabel";
-            BookValueLabel.Size = new Size(469, 48);
+            BookValueLabel.Size = new Size(454, 50);
             BookValueLabel.TabIndex = 5;
             BookValueLabel.Text = "Заставна вартість";
             BookValueLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -203,7 +203,7 @@
             BookQuantityLabel.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
             BookQuantityLabel.Location = new Point(3, 0);
             BookQuantityLabel.Name = "BookQuantityLabel";
-            BookQuantityLabel.Size = new Size(469, 48);
+            BookQuantityLabel.Size = new Size(453, 50);
             BookQuantityLabel.TabIndex = 4;
             BookQuantityLabel.Text = "Кількість екземплярів";
             BookQuantityLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -216,12 +216,12 @@
             ButtonRowLayout.Controls.Add(BookValue, 0, 0);
             ButtonRowLayout.Controls.Add(BookQuantity, 0, 0);
             ButtonRowLayout.Dock = DockStyle.Fill;
-            ButtonRowLayout.Location = new Point(3, 381);
+            ButtonRowLayout.Location = new Point(3, 395);
             ButtonRowLayout.Name = "ButtonRowLayout";
             ButtonRowLayout.RowCount = 1;
             ButtonRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             ButtonRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            ButtonRowLayout.Size = new Size(950, 53);
+            ButtonRowLayout.Size = new Size(919, 54);
             ButtonRowLayout.TabIndex = 6;
             // 
             // BookValue
@@ -231,10 +231,10 @@
             BookValue.Dock = DockStyle.Fill;
             BookValue.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
             BookValue.ForeColor = Color.FromArgb(47, 60, 126);
-            BookValue.Location = new Point(478, 3);
+            BookValue.Location = new Point(462, 3);
             BookValue.Name = "BookValue";
             BookValue.PlaceholderText = "Заставна вартість";
-            BookValue.Size = new Size(469, 43);
+            BookValue.Size = new Size(454, 43);
             BookValue.TabIndex = 11;
             // 
             // BookQuantity
@@ -247,7 +247,7 @@
             BookQuantity.Location = new Point(3, 3);
             BookQuantity.Name = "BookQuantity";
             BookQuantity.PlaceholderText = "Кількість екземплярів";
-            BookQuantity.Size = new Size(469, 43);
+            BookQuantity.Size = new Size(453, 43);
             BookQuantity.TabIndex = 10;
             // 
             // BookTitle
@@ -257,18 +257,18 @@
             BookTitle.Dock = DockStyle.Fill;
             BookTitle.Font = new Font("Bookman Old Style", 18F, FontStyle.Regular, GraphicsUnit.Point);
             BookTitle.ForeColor = Color.FromArgb(47, 60, 126);
-            BookTitle.Location = new Point(3, 57);
+            BookTitle.Location = new Point(3, 59);
             BookTitle.Name = "BookTitle";
             BookTitle.PlaceholderText = "Назва книги";
-            BookTitle.Size = new Size(950, 43);
+            BookTitle.Size = new Size(919, 43);
             BookTitle.TabIndex = 7;
             // 
             // RightSideBar
             // 
             RightSideBar.Dock = DockStyle.Right;
-            RightSideBar.Location = new Point(1006, 69);
+            RightSideBar.Location = new Point(975, 69);
             RightSideBar.Name = "RightSideBar";
-            RightSideBar.Size = new Size(50, 437);
+            RightSideBar.Size = new Size(50, 452);
             RightSideBar.TabIndex = 3;
             // 
             // LeftSideBar
@@ -276,7 +276,7 @@
             LeftSideBar.Dock = DockStyle.Left;
             LeftSideBar.Location = new Point(0, 69);
             LeftSideBar.Name = "LeftSideBar";
-            LeftSideBar.Size = new Size(50, 437);
+            LeftSideBar.Size = new Size(50, 452);
             LeftSideBar.TabIndex = 2;
             // 
             // TitlePanel
@@ -285,7 +285,7 @@
             TitlePanel.Dock = DockStyle.Top;
             TitlePanel.Location = new Point(0, 0);
             TitlePanel.Name = "TitlePanel";
-            TitlePanel.Size = new Size(1056, 69);
+            TitlePanel.Size = new Size(1025, 69);
             TitlePanel.TabIndex = 1;
             // 
             // MainTitle
@@ -294,18 +294,18 @@
             MainTitle.Font = new Font("Bookman Old Style", 30F, FontStyle.Regular, GraphicsUnit.Point);
             MainTitle.Location = new Point(0, 0);
             MainTitle.Name = "MainTitle";
-            MainTitle.Size = new Size(1056, 69);
+            MainTitle.Size = new Size(1025, 69);
             MainTitle.TabIndex = 1;
-            MainTitle.Text = "Додати книгу";
+            MainTitle.Text = "Змінити книгу";
             MainTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // ButtonsPanel
             // 
             ButtonsPanel.Controls.Add(ButtonsLayout);
             ButtonsPanel.Dock = DockStyle.Bottom;
-            ButtonsPanel.Location = new Point(0, 506);
+            ButtonsPanel.Location = new Point(0, 521);
             ButtonsPanel.Name = "ButtonsPanel";
-            ButtonsPanel.Size = new Size(1056, 75);
+            ButtonsPanel.Size = new Size(1025, 75);
             ButtonsPanel.TabIndex = 0;
             // 
             // ButtonsLayout
@@ -317,13 +317,13 @@
             ButtonsLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.5F));
             ButtonsLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             ButtonsLayout.Controls.Add(CancelButton, 3, 0);
-            ButtonsLayout.Controls.Add(AddButton, 1, 0);
+            ButtonsLayout.Controls.Add(ChangeButton, 1, 0);
             ButtonsLayout.Dock = DockStyle.Fill;
             ButtonsLayout.Location = new Point(0, 0);
             ButtonsLayout.Name = "ButtonsLayout";
             ButtonsLayout.RowCount = 1;
             ButtonsLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            ButtonsLayout.Size = new Size(1056, 75);
+            ButtonsLayout.Size = new Size(1025, 75);
             ButtonsLayout.TabIndex = 0;
             // 
             // CancelButton
@@ -332,40 +332,39 @@
             CancelButton.FlatAppearance.BorderSize = 4;
             CancelButton.FlatStyle = FlatStyle.Flat;
             CancelButton.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            CancelButton.Location = new Point(556, 3);
+            CancelButton.Location = new Point(540, 3);
             CancelButton.Name = "CancelButton";
-            CancelButton.Size = new Size(231, 69);
+            CancelButton.Size = new Size(224, 69);
             CancelButton.TabIndex = 6;
             CancelButton.Text = "Cancel";
             CancelButton.UseVisualStyleBackColor = false;
             CancelButton.Click += CancelButton_Click;
             // 
-            // AddButton
+            // ChangeButton
             // 
-            AddButton.Dock = DockStyle.Fill;
-            AddButton.FlatAppearance.BorderSize = 4;
-            AddButton.FlatStyle = FlatStyle.Flat;
-            AddButton.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            AddButton.Location = new Point(267, 3);
-            AddButton.Name = "AddButton";
-            AddButton.Size = new Size(231, 69);
-            AddButton.TabIndex = 5;
-            AddButton.Text = "Add";
-            AddButton.UseVisualStyleBackColor = false;
-            AddButton.Click += AddButton_Click;
+            ChangeButton.Dock = DockStyle.Fill;
+            ChangeButton.FlatAppearance.BorderSize = 4;
+            ChangeButton.FlatStyle = FlatStyle.Flat;
+            ChangeButton.Font = new Font("Bookman Old Style", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            ChangeButton.Location = new Point(259, 3);
+            ChangeButton.Name = "ChangeButton";
+            ChangeButton.Size = new Size(224, 69);
+            ChangeButton.TabIndex = 5;
+            ChangeButton.Text = "Change";
+            ChangeButton.UseVisualStyleBackColor = false;
+            ChangeButton.Click += ChangeButton_Click;
             // 
-            // AddNewBook
+            // ChangeBook
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(251, 234, 235);
-            ClientSize = new Size(1056, 581);
-            Controls.Add(AddBookMainPanel);
+            ClientSize = new Size(1025, 596);
+            Controls.Add(ChangeBookMainPanel);
             Font = new Font("Bookman Old Style", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(47, 60, 126);
-            Margin = new Padding(5, 3, 5, 3);
-            Name = "AddNewBook";
-            Text = "AddNewBook";
-            AddBookMainPanel.ResumeLayout(false);
+            Name = "ChangeBook";
+            Text = "ChangeBook";
+            ChangeBookMainPanel.ResumeLayout(false);
             MainDataPanel.ResumeLayout(false);
             DataLayout.ResumeLayout(false);
             DataLayout.PerformLayout();
@@ -380,28 +379,28 @@
 
         #endregion
 
-        private Panel AddBookMainPanel;
-        private Panel ButtonsPanel;
-        private TableLayoutPanel ButtonsLayout;
-        private Panel TitlePanel;
-        private Button CancelButton;
-        private Button AddButton;
-        private Panel RightSideBar;
-        private Panel LeftSideBar;
-        private Label MainTitle;
+        private Panel ChangeBookMainPanel;
         private Panel MainDataPanel;
         private TableLayoutPanel DataLayout;
+        private TextBox BookGenre;
+        private TextBox BookAuthor;
+        private Label BookGenreLabel;
         private Label BookAuthorLabel;
         private Label BookTitleLabel;
-        private Label BookGenreLabel;
         private TableLayoutPanel LableRowLayout;
         private Label BookValueLabel;
         private Label BookQuantityLabel;
         private TableLayoutPanel ButtonRowLayout;
-        private TextBox BookTitle;
-        private TextBox BookGenre;
-        private TextBox BookAuthor;
         private TextBox BookValue;
         private TextBox BookQuantity;
+        private TextBox BookTitle;
+        private Panel RightSideBar;
+        private Panel LeftSideBar;
+        private Panel TitlePanel;
+        private Label MainTitle;
+        private Panel ButtonsPanel;
+        private TableLayoutPanel ButtonsLayout;
+        private Button CancelButton;
+        private Button ChangeButton;
     }
 }

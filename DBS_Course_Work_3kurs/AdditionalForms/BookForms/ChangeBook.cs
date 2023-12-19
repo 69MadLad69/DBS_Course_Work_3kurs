@@ -1,12 +1,9 @@
-﻿using DBS_Course_Work_3kurs.EF;
-using DBS_Course_Work_3kurs.Entities;
+﻿using DBS_Course_Work_3kurs.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Printing;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +11,23 @@ using System.Windows.Forms;
 
 namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
 {
-    public partial class AddNewBook : Form
+    public partial class ChangeBook : Form
     {
         MainForm mainForm;
-        public AddNewBook(MainForm main)
+        Book selectedBook;
+        public ChangeBook(MainForm main, DataGridViewRow selectedRow)
         {
             InitializeComponent();
-
             mainForm = main;
+
+            selectedBook = mainForm.ef.books.Get((int)selectedRow.Cells[0].Value);
+
+            BookTitle.Text = selectedBook.Title;
+            BookAuthor.Text = selectedBook.Author;
+            BookGenre.Text = selectedBook.Genre;
+            BookValue.Text = selectedBook.Collateral_value.ToString();
+            BookQuantity.Text = selectedBook.Quantity.ToString();
+
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -29,19 +35,10 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
             this.Close();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void ChangeButton_Click(object sender, EventArgs e)
         {
-            int newBookId = 1;
-
-            if (mainForm.ef.books.GetPage(mainForm.pageSize, 0).Count() != 0)
-            {
-                newBookId = mainForm.ef.books.GetPage(
-                    mainForm.pageSize, mainForm.ef.books.CountPages(mainForm.pageSize)
-                    ).Last().Book_Id + 1;
-            }
-
-            int newBookQuantity = 0;
-            double newBookValue = 0;
+            int selectedBookQuantity = 0;
+            double selectedBookValue = 0;
 
             if (BookTitle.Text == "")
             {
@@ -49,21 +46,18 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
             }
             else
             {
-                if (int.TryParse(BookQuantity.Text, out newBookQuantity) && double.TryParse(BookValue.Text, out newBookValue))
+                if (int.TryParse(BookQuantity.Text, out selectedBookQuantity) && double.TryParse(BookValue.Text, out selectedBookValue))
                 {
-                    Book newBook = new Book();
-
-                    newBook.Book_Id = newBookId;
-                    newBook.Title = BookTitle.Text;
-                    newBook.Author = BookAuthor.Text;
-                    newBook.Genre = BookGenre.Text;
-                    newBook.Collateral_value = Math.Round(newBookValue, 2);
-                    newBook.Quantity = newBookQuantity;
+                    selectedBook.Title = BookTitle.Text;
+                    selectedBook.Author = BookAuthor.Text;
+                    selectedBook.Genre = BookGenre.Text;
+                    selectedBook.Collateral_value = Math.Round(selectedBookValue, 2);
+                    selectedBook.Quantity = selectedBookQuantity;
 
 
-                    if (mainForm.ef.books.Find(book => book.Title == newBook.Title, 0, 10).Count() == 0)
+                    if (mainForm.ef.books.Find(book => book.Title == selectedBook.Title, 0, 10).Count() == 0)
                     {
-                        mainForm.ef.books.Create(newBook);
+                        mainForm.ef.books.Update(selectedBook);
                         mainForm.LoadBooksTable();
                         this.Close();
                     }

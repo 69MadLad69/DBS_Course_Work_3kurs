@@ -33,6 +33,8 @@ namespace DBS_Course_Work_3kurs
 
             dbContextOptions.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 
+            RepositoryFactory.Initialize(new LibraryDBContext(dbContextOptions.Options));
+
             ef = new EFUnitOfWork(dbContextOptions.Options);
 
             InitializeComponent();
@@ -43,34 +45,6 @@ namespace DBS_Course_Work_3kurs
         private void MainForm_Load(object sender, EventArgs e)
         {
 
-        }
-
-        public bool isIntParsable(String val)
-        {
-            try
-            {
-                int num = int.Parse(val);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        public bool isDoubleParsable(String val)
-        {
-            try
-            {
-                double num = double.Parse(val, NumberStyles.Any);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
         }
 
         // Books
@@ -135,6 +109,23 @@ namespace DBS_Course_Work_3kurs
             BooksPageNumber = ef.books.CountPages(pageSize);
             ChangePageLabel(BooksPageLabel, BooksPageNumber);
             LoadBooksTable();
+        }
+
+        private void ChangeBookButton_Click(object sender, EventArgs e)
+        {
+            ChangeBook changer = new ChangeBook(this, BooksTable.SelectedRows[0]);
+            changer.Show();
+        }
+
+        private void DeleteBookButton_Click(object sender, EventArgs e)
+        {
+            int Book_Id = (int)BooksTable.SelectedRows[0].Cells[0].Value;
+            DialogResult result = MessageBox.Show("Чи ви впевнені в видаленні рядка #" + Book_Id + "?", "Підтвердження", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                ef.books.Delete(Book_Id);
+                LoadBooksTable();
+            }
         }
     }
 }
