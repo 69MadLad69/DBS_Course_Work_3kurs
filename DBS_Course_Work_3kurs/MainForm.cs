@@ -16,15 +16,17 @@ using DBS_Course_Work_3kurs.EF;
 using DBS_Course_Work_3kurs.Entities;
 using DBS_Course_Work_3kurs.AdditionalForms.BookForms;
 using System.Globalization;
+using DBS_Course_Work_3kurs.Controllers;
 
 namespace DBS_Course_Work_3kurs
 {
     public partial class MainForm : Form
     {
         public EFUnitOfWork ef;
+        public BooksController BC;
+        public CustomerController CC;
 
         public int pageSize = 10;
-        int BooksPageNumber = 0;
         public MainForm()
         {
             string connectionString = "Server = 127.0.0.1; Database = Library; User Id = root; Password = bober2467;";
@@ -39,9 +41,14 @@ namespace DBS_Course_Work_3kurs
 
             InitializeComponent();
 
-            BooksSearchType.SelectedIndex = 0;
+            BC = new BooksController(this);
+            CC = new CustomerController(this);
 
-            LoadBooksTable();
+            BooksSearchType.SelectedIndex = 0;
+            CustomerSearchType.SelectedIndex = 0;
+
+            BC.LoadBooksTable();
+            CC.LoadCustomersTable();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -49,7 +56,9 @@ namespace DBS_Course_Work_3kurs
 
         }
 
-        // Books
+        // Books Tab
+
+        /*
         public void LoadBooksTable()
         {
             BooksTable.Rows.Clear();
@@ -64,6 +73,7 @@ namespace DBS_Course_Work_3kurs
         {
             label.Text = "Page: " + pageNum;
         }
+        */
 
         private void AddBookButton_Click(object sender, EventArgs e)
         {
@@ -73,44 +83,22 @@ namespace DBS_Course_Work_3kurs
 
         private void BooksNextPageButton_Click(object sender, EventArgs e)
         {
-            if (BooksPageNumber + 1 <= RepositoryFactory.GetBooksRepository().CountPages(pageSize))
-            {
-                BooksPageNumber += 1;
-                ChangePageLabel(BooksPageLabel, BooksPageNumber);
-                LoadBooksTable();
-            }
-            else
-            {
-                MessageBox.Show("Це остання сторінка!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            BC.NextPage();
         }
 
         private void BooksFirstPageButton_Click(object sender, EventArgs e)
         {
-            BooksPageNumber = 0;
-            ChangePageLabel(BooksPageLabel, BooksPageNumber);
-            LoadBooksTable();
+            BC.FirstPage();
         }
 
         private void BooksPrevPageButton_Click(object sender, EventArgs e)
         {
-            if (BooksPageNumber - 1 != -1)
-            {
-                BooksPageNumber -= 1;
-                ChangePageLabel(BooksPageLabel, BooksPageNumber);
-                LoadBooksTable();
-            }
-            else
-            {
-                MessageBox.Show("Це перша сторінка!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            BC.PrevPage();
         }
 
         private void BooksLastPageButton_Click(object sender, EventArgs e)
         {
-            BooksPageNumber = RepositoryFactory.GetBooksRepository().CountPages(pageSize);
-            ChangePageLabel(BooksPageLabel, BooksPageNumber);
-            LoadBooksTable();
+            BC.LastPage();
         }
 
         private void ChangeBookButton_Click(object sender, EventArgs e)
@@ -126,8 +114,50 @@ namespace DBS_Course_Work_3kurs
             if (result == DialogResult.Yes)
             {
                 RepositoryFactory.GetBooksRepository().Delete(Book_Id);
-                LoadBooksTable();
+                BC.LoadBooksTable();
             }
+        }
+
+        private void BooksSearchButton_Click(object sender, EventArgs e)
+        {
+            BC.Search();
+        }
+
+        private void BooksShowAllButton_Click(object sender, EventArgs e)
+        {
+            BC.ShowAll();
+        }
+
+        // Customers Tab
+
+        private void CustomersNextPageButton_Click(object sender, EventArgs e)
+        {
+            CC.NextPage();
+        }
+
+        private void CustomersPrevPageButton_Click(object sender, EventArgs e)
+        {
+            CC.PrevPage();
+        }
+
+        private void CustomersFirstPageButton_Click(object sender, EventArgs e)
+        {
+            CC.FirstPage();
+        }
+
+        private void CustomersLastPageButton_Click(object sender, EventArgs e)
+        {
+            CC.LastPage();
+        }
+
+        private void CustomerSearchButton_Click(object sender, EventArgs e)
+        {
+            CC.Search();
+        }
+
+        private void CustomerShowAllButton_Click(object sender, EventArgs e)
+        {
+            CC.ShowAll();
         }
     }
 }

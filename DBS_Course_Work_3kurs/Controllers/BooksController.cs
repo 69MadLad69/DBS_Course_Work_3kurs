@@ -27,7 +27,8 @@ namespace DBS_Course_Work_3kurs.Controllers
         public void Search() 
         {
             BooksPageNumber = 0;
-            string searchedText = mainForm.BookSearchText.Text;
+            ChangePageLabel(mainForm.BooksPageLabel, BooksPageNumber);
+            string searchedText = mainForm.BookSearchText.Text.Trim();
 
             switch (mainForm.BooksSearchType.SelectedIndex) 
             { 
@@ -46,7 +47,64 @@ namespace DBS_Course_Work_3kurs.Controllers
                         }
                         break;
                     }
+
+                case 1: 
+                    {
+                        searchPredicate = b => b.Title.ToLower().Contains(searchedText.ToLower());
+                        searched = true;
+                        LoadBooksTable();
+                        break;
+                    }
+
+                case 2:
+                    {
+                        searchPredicate = b => b.Author.ToLower().Contains(searchedText.ToLower());
+                        searched = true;
+                        LoadBooksTable();
+                        break;
+                    }
+
+                case 3:
+                    {
+                        searchPredicate = b => b.Genre.ToLower().Contains(searchedText.ToLower());
+                        searched = true;
+                        LoadBooksTable();
+                        break;
+                    }
+
+                case 4:
+                    {
+                        searchPredicate = b => b.Collateral_value.ToString().ToLower().Contains(searchedText.ToLower());
+                        searched = true;
+                        LoadBooksTable();
+                        break;
+                    }
+
+                case 5:
+                    {
+                        int searchedBookQuantity = 0;
+                        if (int.TryParse(searchedText, out searchedBookQuantity))
+                        {
+                            searchPredicate = b => b.Quantity == searchedBookQuantity;
+                            searched = true;
+                            LoadBooksTable();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Для пошуку за Кількості введіть ціле число!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    }
             }
+        }
+
+        public void ShowAll() 
+        {
+            BooksPageNumber = 0;
+            ChangePageLabel(mainForm.BooksPageLabel, BooksPageNumber);
+            searched = false;
+            LoadBooksTable();
+            mainForm.BookSearchText.Clear();
         }
 
         public void LoadBooksTable()
@@ -78,7 +136,7 @@ namespace DBS_Course_Work_3kurs.Controllers
 
         public void NextPage() 
         {
-            if (BooksPageNumber + 1 <= RepositoryFactory.GetBooksRepository().CountPages(pageSize))
+            if (BooksPageNumber + 1 <= booksRepository.CountPages(pageSize))
             {
                 BooksPageNumber += 1;
                 ChangePageLabel(mainForm.BooksPageLabel, BooksPageNumber);

@@ -43,7 +43,7 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
             int selectedBookQuantity = 0;
             double selectedBookValue = 0;
 
-            if (BookTitle.Text == "")
+            if (BookTitle.Text.Trim() == "")
             {
                 MessageBox.Show("Книга має мати назву!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -51,9 +51,19 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
             {
                 if (int.TryParse(BookQuantity.Text, out selectedBookQuantity) && double.TryParse(BookValue.Text, out selectedBookValue))
                 {
-                    selectedBook.Title = BookTitle.Text;
-                    selectedBook.Author = BookAuthor.Text;
-                    selectedBook.Genre = BookGenre.Text;
+                    selectedBook.Title = BookTitle.Text.Trim();
+
+                    if (BookAuthor.Text.Trim() == "" && BookGenre.Text.Trim() == "")
+                    {
+                        selectedBook.Author = "Невідомо";
+                        selectedBook.Genre = "Невідомо";
+                    }
+                    else
+                    {
+                        selectedBook.Author = BookAuthor.Text.Trim();
+                        selectedBook.Genre = BookGenre.Text.Trim();
+                    }
+
                     selectedBook.Collateral_value = Math.Round(selectedBookValue, 2);
                     selectedBook.Quantity = selectedBookQuantity;
 
@@ -61,7 +71,7 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
                     if (booksRepository.Find(book => book.Title == selectedBook.Title, 0, 10).Count() == 0)
                     {
                         booksRepository.Update(selectedBook);
-                        mainForm.LoadBooksTable();
+                        mainForm.BC.LoadBooksTable();
                         this.Close();
                     }
                     else
