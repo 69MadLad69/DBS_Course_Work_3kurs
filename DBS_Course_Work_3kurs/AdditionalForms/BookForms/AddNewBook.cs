@@ -58,14 +58,21 @@ namespace DBS_Course_Work_3kurs.AdditionalForms.BookForms
                     newBook.Book_Id = newBookId;
                     newBook.Title = BookTitle.Text.Trim();
 
-                    if (BookAuthor.Text.Trim() == "" && BookGenre.Text.Trim() == "")
+                    if (BookAuthor.Text.Trim() == "")
                     {
                         newBook.Author = "Невідомо";
-                        newBook.Genre = "Невідомо";
                     }
                     else
                     {
                         newBook.Author = BookAuthor.Text.Trim();
+                    }
+
+                    if (BookGenre.Text.Trim() == "")
+                    {
+                        newBook.Genre = "Невідомо";
+                    }
+                    else
+                    {
                         newBook.Genre = BookGenre.Text.Trim();
                     }
 

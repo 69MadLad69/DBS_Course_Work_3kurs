@@ -39,7 +39,7 @@
             LableRowLayout = new TableLayoutPanel();
             BookValueLabel = new Label();
             BookQuantityLabel = new Label();
-            ButtonRowLayout = new TableLayoutPanel();
+            TextBoxRowLayout = new TableLayoutPanel();
             BookValue = new TextBox();
             BookQuantity = new TextBox();
             BookTitle = new TextBox();
@@ -55,7 +55,7 @@
             MainDataPanel.SuspendLayout();
             DataLayout.SuspendLayout();
             LableRowLayout.SuspendLayout();
-            ButtonRowLayout.SuspendLayout();
+            TextBoxRowLayout.SuspendLayout();
             TitlePanel.SuspendLayout();
             ButtonsPanel.SuspendLayout();
             ButtonsLayout.SuspendLayout();
@@ -93,7 +93,7 @@
             DataLayout.Controls.Add(BookAuthorLabel, 0, 2);
             DataLayout.Controls.Add(BookTitleLabel, 0, 0);
             DataLayout.Controls.Add(LableRowLayout, 0, 6);
-            DataLayout.Controls.Add(ButtonRowLayout, 0, 7);
+            DataLayout.Controls.Add(TextBoxRowLayout, 0, 7);
             DataLayout.Controls.Add(BookTitle, 0, 1);
             DataLayout.Dock = DockStyle.Fill;
             DataLayout.Location = new Point(0, 0);
@@ -208,21 +208,21 @@
             BookQuantityLabel.Text = "Кількість екземплярів";
             BookQuantityLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // ButtonRowLayout
+            // TextBoxRowLayout
             // 
-            ButtonRowLayout.ColumnCount = 2;
-            ButtonRowLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            ButtonRowLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            ButtonRowLayout.Controls.Add(BookValue, 0, 0);
-            ButtonRowLayout.Controls.Add(BookQuantity, 0, 0);
-            ButtonRowLayout.Dock = DockStyle.Fill;
-            ButtonRowLayout.Location = new Point(3, 381);
-            ButtonRowLayout.Name = "ButtonRowLayout";
-            ButtonRowLayout.RowCount = 1;
-            ButtonRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            ButtonRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            ButtonRowLayout.Size = new Size(950, 53);
-            ButtonRowLayout.TabIndex = 6;
+            TextBoxRowLayout.ColumnCount = 2;
+            TextBoxRowLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TextBoxRowLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            TextBoxRowLayout.Controls.Add(BookValue, 0, 0);
+            TextBoxRowLayout.Controls.Add(BookQuantity, 0, 0);
+            TextBoxRowLayout.Dock = DockStyle.Fill;
+            TextBoxRowLayout.Location = new Point(3, 381);
+            TextBoxRowLayout.Name = "TextBoxRowLayout";
+            TextBoxRowLayout.RowCount = 1;
+            TextBoxRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TextBoxRowLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TextBoxRowLayout.Size = new Size(950, 53);
+            TextBoxRowLayout.TabIndex = 6;
             // 
             // BookValue
             // 
@@ -370,8 +370,8 @@
             DataLayout.ResumeLayout(false);
             DataLayout.PerformLayout();
             LableRowLayout.ResumeLayout(false);
-            ButtonRowLayout.ResumeLayout(false);
-            ButtonRowLayout.PerformLayout();
+            TextBoxRowLayout.ResumeLayout(false);
+            TextBoxRowLayout.PerformLayout();
             TitlePanel.ResumeLayout(false);
             ButtonsPanel.ResumeLayout(false);
             ButtonsLayout.ResumeLayout(false);
@@ -397,7 +397,7 @@
         private TableLayoutPanel LableRowLayout;
         private Label BookValueLabel;
         private Label BookQuantityLabel;
-        private TableLayoutPanel ButtonRowLayout;
+        private TableLayoutPanel TextBoxRowLayout;
         private TextBox BookTitle;
         private TextBox BookGenre;
         private TextBox BookAuthor;

@@ -17,6 +17,7 @@ using DBS_Course_Work_3kurs.Entities;
 using DBS_Course_Work_3kurs.AdditionalForms.BookForms;
 using System.Globalization;
 using DBS_Course_Work_3kurs.Controllers;
+using DBS_Course_Work_3kurs.AdditionalForms.CustomerForms;
 
 namespace DBS_Course_Work_3kurs
 {
@@ -158,6 +159,29 @@ namespace DBS_Course_Work_3kurs
         private void CustomerShowAllButton_Click(object sender, EventArgs e)
         {
             CC.ShowAll();
+        }
+
+        private void AddCustomerButton_Click(object sender, EventArgs e)
+        {
+            AddNewCustomer adder = new AddNewCustomer(this);
+            adder.Show();
+        }
+
+        private void ChangeCustomerButton_Click(object sender, EventArgs e)
+        {
+            ChangeCustomer changer = new ChangeCustomer(this, CustomersTable.SelectedRows[0]);
+            changer.Show();
+        }
+
+        private void DeleteCustomerButton_Click(object sender, EventArgs e)
+        {
+            int Customer_Id = (int)CustomersTable.SelectedRows[0].Cells[0].Value;
+            DialogResult result = MessageBox.Show("Чи ви впевнені в видаленні рядка #" + Customer_Id + "?", "Підтвердження", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                RepositoryFactory.GetCustomersRepository().Delete(Customer_Id);
+                CC.LoadCustomersTable();
+            }
         }
     }
 }
